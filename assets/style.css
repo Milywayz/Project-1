@@ -28,3 +28,8 @@ main {
     font-size: 32px;
     margin: 0px 16px
 }
+
+.hide{
+
+    display: none;
+}
