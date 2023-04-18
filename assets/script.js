@@ -37,24 +37,25 @@ generateButton.addEventListener('click', function () {
             ageH2.textContent = results.results[0].dob.age
             divContainer.appendChild(ageH2)
             age = results.results[0].dob.age;
-            
-                return fetch("https://www.swapi.tech/api/starships?page=1&limit=100")
-            
+
+            return Promise.all([fetch("https://www.swapi.tech/api/starships?page=1&limit=100"),
+            fetch("https://www.swapi.tech/api/vehicles?page=1&limit=100")])
 
         })
-        .then(response => {
-            console.log(response)
-           
-                return response.json()
-          
+        .then(responses => {
+            console.log(responses)
+
+
+            return Promise.all([responses[0].json(), responses[1].json()])
+
         })
 
-        // If the character is older than 16, they drive a starship, if not, they do not have a starship yet
-        .then(starship => {
+        // If the character is older than 16, they drive a vehicle, if not, they do not have a starship yet
+        .then(([starship, vehicle]) => {
             console.log(starship)
             let userStarship = document.createElement('h2');
             console.log(userStarship);
-            if (age <16) {
+            if (age < 16) {
                 userStarship.textContent = "Your character is too young to drive a starship!"
                 divContainer.appendChild(userStarship);
                 return;
@@ -64,7 +65,22 @@ generateButton.addEventListener('click', function () {
                 userStarship.textContent = "Your character drives the starship: " + starship.results[randomIndex].name;
                 divContainer.appendChild(userStarship);
             }
+            console.log(vehicle)
+            let userVehicle = document.createElement('h2');
+            console.log(userVehicle);
+            if (age < 16) {
+                userVehicle.textContent = "Your character is too young to drive a vehicle!"
+                divContainer.appendChild(userVehicle);
+                return;
+            }
+            else {
+                let randomIndex = Math.floor(Math.random() * vehicle.results.length);
+                userVehicle.textContent = "Your character drives the vehicle: " + vehicle.results[randomIndex].name;
+                divContainer.appendChild(userVehicle);
+            }
         })
+
+
 
     // Fetches three friends for the character
     fetch("https://www.swapi.tech/api/people?page=1&limit=100")
@@ -111,13 +127,5 @@ generateButton.addEventListener('click', function () {
 
 
         })
-
-
-
-
-    // If the character is older than 16, they drive a vehicle, if not, they do not have a vehicle yet
-    fetch("https://www.swapi.tech/api/vehicles?page=1&limit=100")
-        .then(response => response.json())
-        .then(data => console.log(data))
 
 })
