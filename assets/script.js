@@ -94,7 +94,18 @@ generateButton.addEventListener('click', function () {
     // Fetches what planet the character is from
     fetch("https://www.swapi.tech/api/planets?page=1&limit=100")
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(planets => {
+            
+            console.log(planets)
+    
+            let randomIndex = Math.floor(Math.random() * planets.results.length)
+    
+            let userPlanets = document.createElement('h2')
+            userPlanets.textContent = planets.results[randomIndex].name
+            divContainer.appendChild(userPlanets)
+        })
+
+
 
     // Fetches what species the character is
     fetch("https://www.swapi.tech/api/species?page=1&limit=100")
