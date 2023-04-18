@@ -1,3 +1,30 @@
 body {
-    background-color: black;
+    background-image: url(./images/space-background-with-stars-vector-illustration_97886-319.avif);
+}
+
+h1 {
+    color: yellow;
+    display: inline;
+    padding: 8px;
+}
+
+.title {
+    position: relative;
+    left: 500px;
+}
+
+.generator-box {
+    border: 1px solid white;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.btn {
+    background-color: yellow;
+    font-weight: bold;
+    font-size: 32px;
+    margin: 0px 16px
 }
