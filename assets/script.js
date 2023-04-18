@@ -1,3 +1,4 @@
+// 
 let generateButton = document.querySelector('#generateButton')
 let divContainer = document.querySelector("#divContainer")
 
@@ -52,7 +53,20 @@ generateButton.addEventListener('click' , function(){
     
     fetch("https://www.swapi.tech/api/species?page=1&limit=100")
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(species => {
+
+        console.log(species)
+
+        let randomIndex = Math.floor(Math.random() * species.results.length)
+
+        let userSpecies = document.createElement('h2')
+        userSpecies.textContent = species.results[randomIndex].name
+        divContainer.appendChild(userSpecies)
+
+
+    })
+
+
     
     fetch("https://www.swapi.tech/api/starships?page=1&limit=100")
     .then(response => response.json())
