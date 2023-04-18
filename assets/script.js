@@ -6,11 +6,6 @@ let divContainer = document.querySelector("#divContainer")
 
 
 
-
-
-
-
-
 generateButton.addEventListener('click', function () {
     generateButton.classList.add('hide')
     let age;
