@@ -8,11 +8,6 @@ let saveCharacterButton = document.querySelector('.saveCharacterButton')
 
 
 
-
-
-
-
-
 generateButton.addEventListener('click', function () {
     generateButton.classList.add('hide')
     saveCharacterButton.classList.remove('hide')
