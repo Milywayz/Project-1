@@ -8,46 +8,36 @@ let saveCharacterButton = document.querySelector('.saveCharacterButton')
 
 
 
-
-
-
-
-
 generateButton.addEventListener('click', function () {
     generateButton.classList.add('hide')
     saveCharacterButton.classList.remove('hide')
     let age;
 
-    
-    
+
+
     // Fetches character's name, age, and gender.
     fetch("https://randomuser.me/api/")
-    .then(response => response.json())
-    .then(results => {
+        .then(response => response.json())
+        .then(results => {
             console.log(results)
-            
+
+            let fullName = document.createElement('h2');
+            fullName.id = "fullName";
+            fullName.textContent = "Name: " + results.results[0].name.first + " " + results.results[0].name.last;
+            divContainer.appendChild(fullName);
+
             let userGender = document.createElement('h2')
-            userGender.id = "userGender"
-            userGender.textContent = results.results[0].gender
-            divContainer.appendChild(userGender)
-            console.log(userGender)
-            
-            let firstName = document.createElement('h2')
-            firstName.id = "firstName"
-            firstName.textContent = results.results[0].name.first
-            divContainer.appendChild(firstName)
-            
-            let lastName = document.createElement('h2')
-            lastName.id = "lastName"
-            lastName.textContent = results.results[0].name.last
-            divContainer.appendChild(lastName)
-            
+            userGender.textContent = "Gender: " + results.results[0].gender;
+            divContainer.appendChild(userGender);
+            userGender.id = "userGender";
+            console.log(userGender);
+
             let ageH2 = document.createElement('h2')
-            ageH2.id = "age"
-            ageH2.textContent = results.results[0].dob.age
+            ageH2.id = "age";
+            ageH2.textContent = "Age: " + results.results[0].dob.age;
             divContainer.appendChild(ageH2)
             age = results.results[0].dob.age;
-            
+
             return Promise.all([fetch("https://www.swapi.tech/api/starships?page=1&limit=100"),
             fetch("https://www.swapi.tech/api/vehicles?page=1&limit=100")])
 
@@ -55,11 +45,9 @@ generateButton.addEventListener('click', function () {
         .then(responses => {
             console.log(responses)
 
-
             return Promise.all([responses[0].json(), responses[1].json()])
-            
-        })
 
+        })
         // If the character is older than 16, they drive a vehicle, if not, they do not have a starship yet
         .then(([starship, vehicle]) => {
             console.log(starship)
@@ -92,106 +80,80 @@ generateButton.addEventListener('click', function () {
             }
         })
 
-
-        
-    // Fetches three friends for the character
-    fetch("https://www.swapi.tech/api/people?page=1&limit=100")
-    .then(response => response.json())
-    .then(people => {
-            console.log(people);
-            let randomIndex1 = Math.floor(Math.random() * people.results.length);
-            let randomIndex2 = Math.floor(Math.random() * people.results.length);
-            let randomIndex3 = Math.floor(Math.random() * people.results.length);
-            
-            let friend1 = document.createElement('h2');
-            friend1.id = "friend1"
-            friend1.textContent = people.results[randomIndex1].name;
-            divContainer.appendChild(friend1);
-            console.log(friend1);
-            
-            let friend2 = document.createElement('h2');
-            friend2.id = "friend2"
-            friend2.textContent = people.results[randomIndex2].name;
-            divContainer.appendChild(friend2);
-            console.log(friend2);
-            
-            let friend3 = document.createElement('h2');
-            friend3.id = "friend3"
-            friend3.textContent = people.results[randomIndex3].name;
-            divContainer.appendChild(friend3);
-            console.log(friend3);
-        })
-
     // Fetches what planet the character is from
     fetch("https://www.swapi.tech/api/planets?page=1&limit=100")
         .then(response => response.json())
         .then(planets => {
-            
-            console.log(planets)
-            
+
             let randomIndex = Math.floor(Math.random() * planets.results.length)
-            
+
             let userPlanets = document.createElement('h2')
             userPlanets.id = "userPlanets"
-            userPlanets.textContent = planets.results[randomIndex].name
-            divContainer.appendChild(userPlanets)
+            userPlanets.textContent = "Home planet: " + planets.results[randomIndex].name;
+            divContainer.appendChild(userPlanets);
         })
 
-
-
-        // Fetches what species the character is
+    // Fetches what species the character is
     fetch("https://www.swapi.tech/api/species?page=1&limit=100")
-    .then(response => response.json())
+        .then(response => response.json())
         .then(species => {
 
-            console.log(species)
-            
             let randomIndex = Math.floor(Math.random() * species.results.length)
-            
+
             let userSpecies = document.createElement('h2')
             userSpecies.id = "userSpecies"
-            userSpecies.textContent = species.results[randomIndex].name
-            divContainer.appendChild(userSpecies)
-
-
+            userSpecies.textContent = "Species: " + species.results[randomIndex].name;
+            divContainer.appendChild(userSpecies);
         })
-        
-        saveCharacterButton.addEventListener('click' , function (event){
-        
 
-            event.preventDefault();
-            let allCharacterInfo = {
-                userGender: document.querySelector('#userGender').textContent,
-                firstName: document.querySelector('#firstName').textContent,
-                lastName: document.querySelector('#lastName').textContent,
-                ageH2: document.querySelector('#age').textContent,
-                userStarship: document.querySelector('#userStarship').textContent,
-                userVehicle: document.querySelector('#userVehicle').textContent,
-                friend1: document.querySelector('#friend1').textContent,
-                friend2: document.querySelector('#friend2').textContent,
-                friend3: document.querySelector('#friend3').textContent,
-                userPlanets: document.querySelector('#userPlanets').textContent,
-                userSpecies: document.querySelector('#userSpecies').textContent
-            }
-            characterInfo.push(allCharacterInfo)
-            localStorage.getItem("characterInfo")
-            localStorage.setItem("characterInfo", JSON.stringify(characterInfo))
-            
-        
+    // Fetches three friends for the character
+    fetch("https://www.swapi.tech/api/people?page=1&limit=100")
+        .then(response => response.json())
+        .then(people => {
+            let randomIndex1 = Math.floor(Math.random() * people.results.length);
+            let randomIndex2 = Math.floor(Math.random() * people.results.length);
+            let randomIndex3 = Math.floor(Math.random() * people.results.length);
+
+            let friend1;
+            friend1 = people.results[randomIndex1].name;
+
+            let friend2;
+            friend2 = people.results[randomIndex2].name;
+
+            let friend3;
+            friend3 = people.results[randomIndex3].name;
+
+            let friends = document.createElement('h2');
+            friends.id = "friends";
+            friends.textContent = "Friends: " + friend1 + ", " + friend2 + ", " + friend3;
+            divContainer.appendChild(friends);
         })
-        
-        // function displayCharacter(){
-        
-        //     let info = localStorage.getItem("characterInfo")
-        
-        //     if(info == null) return;
-        //     ul.innerHTML = ""
-        
-        
-            
-        
-        
-        
-        
-        // }
+
+    saveCharacterButton.addEventListener('click', function (event) {
+
+
+        event.preventDefault();
+        let allCharacterInfo = {
+            userGender: document.querySelector('#userGender').textContent,
+            fullName: document.querySelector('#fullName').textContent,
+            ageH2: document.querySelector('#age').textContent,
+            userStarship: document.querySelector('#userStarship').textContent,
+            userVehicle: document.querySelector('#userVehicle').textContent,
+            friends: document.querySelector("#friends").textContent,
+            userPlanets: document.querySelector('#userPlanets').textContent,
+            userSpecies: document.querySelector('#userSpecies').textContent
+        }
+        characterInfo.push(allCharacterInfo)
+        localStorage.getItem("characterInfo")
+        localStorage.setItem("characterInfo", JSON.stringify(characterInfo))
+
+
+    })
+
+    // function displayCharacter(){
+
+    //     let info = localStorage.getItem("characterInfo")
+
+    //     if(info == null) return;
+    //     ul.innerHTML = ""
 })
