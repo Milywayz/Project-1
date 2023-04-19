@@ -17,10 +17,10 @@ h1 {
     border: 1px solid white;
 }
 
-/* main {
+main {
     display: grid;
     grid-template-columns: 1fr 3fr;
-} */
+}
 
 .btn {
     background-color: yellow;
