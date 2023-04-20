@@ -16,9 +16,18 @@ generateButton.addEventListener("click", function () {
 // Fetches character's name, age, and gender.
 function fetchInformation() {
   fetch("https://randomuser.me/api/")
-    .then((response) => response.json())
-    .then((results) => {
-      console.log(results);
+  .then((response) => response.json())
+  .then((results) => {
+    console.log(results);
+    let lightDark = document.createElement("h2")
+    lightDark.id = "lightDark"
+    if (Math.random() > .5){
+      lightDark.textContent = "Currently on the Light Side of the Force..."
+    }
+    else{
+      lightDark.textContent = "Currently on the Dark Side of the Force..."
+    }
+    divContainer.appendChild(lightDark)
 
       let fullName = document.createElement("h2");
       fullName.id = "fullName";
@@ -40,6 +49,7 @@ function fetchInformation() {
       ageH2.textContent = "Age: " + results.results[0].dob.age;
       divContainer.appendChild(ageH2);
       age = results.results[0].dob.age;
+
 
       return Promise.all([
         fetch("https://www.swapi.tech/api/starships?page=1&limit=100"),
@@ -147,6 +157,7 @@ function fetchInformation() {
       friends: document.querySelector("#friends").textContent,
       userPlanets: document.querySelector("#userPlanets").textContent,
       userSpecies: document.querySelector("#userSpecies").textContent,
+      lightDark: document.querySelector("#lightDark").textContent
     };
     characterInfo.push(allCharacterInfo);
     localStorage.getItem("characterInfo");
