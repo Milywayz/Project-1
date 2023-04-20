@@ -6,6 +6,7 @@ let ul = document.querySelector(".allInfo");
 let saveCharacterButton = document.querySelector(".saveCharacterButton");
 displayCharacters();
 
+// Event listener for generate character button, calls fetch information function
 generateButton.addEventListener("click", function () {
   saveCharacterButton.classList.remove("hide");
   let age;
@@ -13,7 +14,7 @@ generateButton.addEventListener("click", function () {
   fetchInformation();
 });
 
-// Fetches character's name, age, and gender.
+// Fetches character's name, age, and gender, and generates if they are on the light or dark side.
 function fetchInformation() {
   fetch("https://randomuser.me/api/")
   .then((response) => response.json())
@@ -49,7 +50,6 @@ function fetchInformation() {
       ageH2.textContent = "Age: " + results.results[0].dob.age;
       divContainer.appendChild(ageH2);
       age = results.results[0].dob.age;
-
 
       return Promise.all([
         fetch("https://www.swapi.tech/api/starships?page=1&limit=100"),
@@ -147,6 +147,7 @@ function fetchInformation() {
     });
 }
 
+// Event listener for saving characters
 saveCharacterButton.addEventListener("click", function (event) {
   event.preventDefault();
   let allCharacterInfo = {
@@ -166,6 +167,7 @@ saveCharacterButton.addEventListener("click", function (event) {
   saveCharacterButton.classList.add("hide");
 });
 
+// Creates a button which displays the previously generated character name as a button
 function displayCharacters() {
   if (characterInfo == null) return;
   ul.innerHTML = "";
@@ -178,6 +180,7 @@ function displayCharacters() {
   }
 }
 
+// Event listener for saved characters buttons. Will display the clicked character's information in the main div container
 ul.addEventListener("click", function (event) {
   let element = event.target;
   console.log("ul clicked");
@@ -193,7 +196,6 @@ ul.addEventListener("click", function (event) {
     for (const property in characterI) {
       //   console.log(`${property}: ${characterI[property]}`);
       divContainer.innerHTML += `<h2>${characterI[property]}</h2>`;
-
     }
   }
 });
