@@ -58,3 +58,89 @@ button {
     padding: 16px;
     font-size: 24px;
 }
+
+/* Media queries */
+/* Small phones */
+@media only screen and (max-width: 480px) {
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+    h1 {
+        font-size: 25px;
+    }
+    .title{
+        font-size: 25px;
+    }
+    #generateButton{
+        font-size: 10px;
+    }
+  }
+  
+  /* Medium phones */
+  @media only screen and (min-width: 481px) and (max-width: 768px) {
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+    h1 {
+        font-size: 25px;
+    }
+    .title{
+        font-size: 25px;
+    }
+    #generateButton{
+        font-size: 10px;
+    }
+  }
+  
+  /* Large phones */
+  @media only screen and (min-width: 769px) and (max-width: 992px) {
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+    h1 {
+        font-size: 25px;
+    }
+    .title{
+        font-size: 25px;
+    }
+    #generateButton{
+        font-size: 10px;
+    }
+  }
+  
+  /* Extra-large phones */
+  @media only screen and (min-width: 993px) and (max-width: 1200px) {
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+    h1 {
+        font-size: 25px;
+    }
+    .title{
+        font-size: 25px;
+    }
+    #generateButton{
+        font-size: 10px;
+    }
+  }
+  
+  /* iPad portrait */
+  @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+    h1 {
+        font-size: 25px;
+    }
+    .title{
+        font-size: 25px;
+    }
+    #generateButton{
+        font-size: 10px;
+    }
+  }
