@@ -7,9 +7,9 @@ let saveCharacterButton = document.querySelector(".saveCharacterButton");
 displayCharacters();
 
 generateButton.addEventListener("click", function () {
-  generateButton.classList.add("hide");
   saveCharacterButton.classList.remove("hide");
   let age;
+  divContainer.innerHTML = "";
   fetchInformation();
 });
 
@@ -145,26 +145,26 @@ function fetchInformation() {
         "Friends: " + friend1 + ", " + friend2 + ", " + friend3;
       divContainer.appendChild(friends);
     });
-
-  saveCharacterButton.addEventListener("click", function (event) {
-    event.preventDefault();
-    let allCharacterInfo = {
-      userGender: document.querySelector("#userGender").textContent,
-      fullName: document.querySelector("#fullName").textContent,
-      ageH2: document.querySelector("#age").textContent,
-      userStarship: document.querySelector("#userStarship").textContent,
-      userVehicle: document.querySelector("#userVehicle").textContent,
-      friends: document.querySelector("#friends").textContent,
-      userPlanets: document.querySelector("#userPlanets").textContent,
-      userSpecies: document.querySelector("#userSpecies").textContent,
-      lightDark: document.querySelector("#lightDark").textContent
-    };
-    characterInfo.push(allCharacterInfo);
-    localStorage.getItem("characterInfo");
-    localStorage.setItem("characterInfo", JSON.stringify(characterInfo));
-    displayCharacters();
-  });
 }
+
+saveCharacterButton.addEventListener("click", function (event) {
+  event.preventDefault();
+  let allCharacterInfo = {
+    userGender: document.querySelector("#userGender").textContent,
+    fullName: document.querySelector("#fullName").textContent,
+    ageH2: document.querySelector("#age").textContent,
+    userStarship: document.querySelector("#userStarship").textContent,
+    userVehicle: document.querySelector("#userVehicle").textContent,
+    friends: document.querySelector("#friends").textContent,
+    userPlanets: document.querySelector("#userPlanets").textContent,
+    userSpecies: document.querySelector("#userSpecies").textContent,
+    lightDark: document.querySelector("#lightDark").textContent
+  };
+  characterInfo.push(allCharacterInfo);
+  localStorage.setItem("characterInfo", JSON.stringify(characterInfo));
+  displayCharacters();
+  saveCharacterButton.classList.add("hide");
+});
 
 function displayCharacters() {
   if (characterInfo == null) return;

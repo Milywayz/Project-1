@@ -1,5 +1,6 @@
 body {
     background-image: url(./images/space-background-with-stars-vector-illustration_97886-319.avif);
+    font-family: 'Star Wars', sans-serif;
 }
 
 h1 {
@@ -36,7 +37,13 @@ main {
 
 #divContainer{
 
+    min-height: 375px;
     text-align: center;
     color: yellow;
  
+}
+
+.saveCharacterDiv{
+    display: flex;
+    justify-content: center;
 }
