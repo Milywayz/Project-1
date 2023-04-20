@@ -181,6 +181,7 @@ function displayCharacters() {
 ul.addEventListener("click", function (event) {
   let element = event.target;
   console.log("ul clicked");
+  divContainer.innerHTML = "";
   if (element.matches("button") === true) {
     console.log("button clicked");
 
