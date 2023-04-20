@@ -1,8 +1,13 @@
+/* General CSS */
 body {
     background-image: url(./images/space-background-with-stars-vector-illustration_97886-319.avif);
     font-family: 'Star Wars', sans-serif;
 }
+.hide{
 
+    display: none;
+}
+/* Header */
 h1 {
     color: yellow;
     display: inline;
@@ -14,40 +19,33 @@ header{
     border-bottom: 3px solid white;
     margin-bottom: 10px;
 }
-
 .title {
     text-align: center;
     font-size: 5em;
 }
-
+/* Main CSS Styling and Positioning */
 main {
     display: grid;
     grid-template-columns: 1fr 3fr;
 }
 
+#divContainer{
+    
+    min-height: 375px;
+    text-align: center;
+    color: yellow;
+    
+}
+.saveCharacterDiv{
+    display: flex;
+    justify-content: center;
+}
+/* Button Styling */
 .btn {
     background-color: yellow;
     font-weight: bold;
     font-size: 32px;
     margin: 0 auto
-}
-
-.hide{
-
-    display: none;
-}
-
-#divContainer{
-
-    min-height: 375px;
-    text-align: center;
-    color: yellow;
- 
-}
-
-.saveCharacterDiv{
-    display: flex;
-    justify-content: center;
 }
 
 button {
