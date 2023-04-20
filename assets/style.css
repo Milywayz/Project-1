@@ -11,7 +11,7 @@ h1 {
 
 .title {
     position: relative;
-    left: 500px;
+    left: 880px;
 }
 
 .generator-box {
@@ -27,7 +27,7 @@ main {
     background-color: yellow;
     font-weight: bold;
     font-size: 32px;
-    margin: 0px 16px
+    margin: 0 auto
 }
 
 .hide{
@@ -46,4 +46,15 @@ main {
 .saveCharacterDiv{
     display: flex;
     justify-content: center;
+}
+
+button {
+    background-color: yellow;
+    width: 75%;
+    margin-top: 16px;
+}
+
+.saveCharacterButton {
+    padding: 16px;
+    font-size: 24px;
 }
