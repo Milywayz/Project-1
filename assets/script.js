@@ -9,7 +9,6 @@ displayCharacters();
 // Event listener for generate character button, calls fetch information function
 generateButton.addEventListener("click", function () {
   saveCharacterButton.classList.remove("hide");
-  let age;
   divContainer.innerHTML = "";
   fetchInformation();
 });
@@ -19,7 +18,7 @@ function fetchInformation() {
   fetch("https://randomuser.me/api/")
   .then((response) => response.json())
   .then((results) => {
-    console.log(results);
+    let age;
     let lightDark = document.createElement("h2")
     lightDark.id = "lightDark"
     if (Math.random() > .5){
@@ -43,7 +42,6 @@ function fetchInformation() {
       userGender.textContent = "Gender: " + results.results[0].gender;
       divContainer.appendChild(userGender);
       userGender.id = "userGender";
-      console.log(userGender);
 
       let ageH2 = document.createElement("h2");
       ageH2.id = "age";
@@ -57,16 +55,13 @@ function fetchInformation() {
       ]);
     })
     .then((responses) => {
-      console.log(responses);
 
       return Promise.all([responses[0].json(), responses[1].json()]);
     })
     // If the character is older than 16, they drive a vehicle, if not, they do not have a starship yet
     .then(([starship, vehicle]) => {
-      console.log(starship);
       let userStarship = document.createElement("h2");
       userStarship.id = "userStarship";
-      console.log(userStarship);
       if (age < 16) {
         userStarship.textContent =
           "Your character is too young to drive a starship!";
@@ -79,10 +74,8 @@ function fetchInformation() {
           starship.results[randomIndex].name;
         divContainer.appendChild(userStarship);
       }
-      console.log(vehicle);
       let userVehicle = document.createElement("h2");
       userVehicle.id = "userVehicle";
-      console.log(userVehicle);
       if (age < 16) {
         userVehicle.textContent =
           "Your character is too young to drive a vehicle!";
@@ -151,15 +144,15 @@ function fetchInformation() {
 saveCharacterButton.addEventListener("click", function (event) {
   event.preventDefault();
   let allCharacterInfo = {
-    userGender: document.querySelector("#userGender").textContent,
+    lightDark: document.querySelector("#lightDark").textContent,
     fullName: document.querySelector("#fullName").textContent,
+    userGender: document.querySelector("#userGender").textContent,
     ageH2: document.querySelector("#age").textContent,
-    userStarship: document.querySelector("#userStarship").textContent,
-    userVehicle: document.querySelector("#userVehicle").textContent,
-    friends: document.querySelector("#friends").textContent,
     userPlanets: document.querySelector("#userPlanets").textContent,
+    friends: document.querySelector("#friends").textContent,
     userSpecies: document.querySelector("#userSpecies").textContent,
-    lightDark: document.querySelector("#lightDark").textContent
+    userStarship: document.querySelector("#userStarship").textContent,
+    userVehicle: document.querySelector("#userVehicle").textContent
   };
   characterInfo.push(allCharacterInfo);
   localStorage.setItem("characterInfo", JSON.stringify(characterInfo));
@@ -183,18 +176,13 @@ function displayCharacters() {
 // Event listener for saved characters buttons. Will display the clicked character's information in the main div container
 ul.addEventListener("click", function (event) {
   let element = event.target;
-  console.log("ul clicked");
   divContainer.innerHTML = "";
   if (element.matches("button") === true) {
-    console.log("button clicked");
 
     let index = element.getAttribute("data-index");
     let characterI = characterInfo[index];
-    // divContainer.textContent =
-    //   characterInfo[index].userGender + characterInfo[index].userPlanets;
-    console.log(characterI);
+
     for (const property in characterI) {
-      //   console.log(`${property}: ${characterI[property]}`);
       divContainer.innerHTML += `<h2>${characterI[property]}</h2>`;
     }
   }
