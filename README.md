@@ -28,5 +28,6 @@ N/A
 ## Features
 
 Generating Button that creates you a whole new character based off Star Wars information <br>
-Saved Character button to save any character chart you liked off to the side
+Saved Character button to save any character chart you liked off to the side <br>
+Tablet and Mobile Sizing
 
