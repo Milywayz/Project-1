@@ -3,43 +3,50 @@ body {
     background-image: url(./images/space-background-with-stars-vector-illustration_97886-319.avif);
     font-family: 'Star Wars', sans-serif;
 }
-.hide{
+
+.hide {
 
     display: none;
 }
+
 /* Header */
 h1 {
     color: yellow;
     display: inline;
     padding: 8px;
 }
-header{
+
+header {
     display: grid;
     grid-template-columns: 1fr 3fr;
     border-bottom: 3px solid white;
     margin-bottom: 10px;
 }
+
 .title {
     text-align: center;
     font-size: 5em;
 }
+
 /* Main CSS Styling and Positioning */
 main {
     display: grid;
     grid-template-columns: 1fr 3fr;
 }
 
-#divContainer{
-    
+#divContainer {
+
     min-height: 375px;
     text-align: center;
     color: yellow;
-    
+
 }
-.saveCharacterDiv{
+
+.saveCharacterDiv {
     display: flex;
     justify-content: center;
 }
+
 /* Button Styling */
 .btn {
     background-color: yellow;
@@ -59,88 +66,76 @@ button {
     font-size: 24px;
 }
 
-/* Media queries */
-/* Small phones */
-@media only screen and (max-width: 480px) {
+
+/* Iphone phones */
+@media only screen and (max-width: 978px) {
     body {
-      display: flex;
-      flex-direction: column;
+        display: flex;
+        flex-direction: column;
     }
-    h1 {
-        font-size: 25px;
+
+    .character {
+        display: none;
+        order: 4;
     }
-    .title{
-        font-size: 25px;
+
+    ul {
+        text-align: center;
     }
-    #generateButton{
+
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .buttonLocation {
+        order: 5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title {
+        font-size: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #generateButton {
         font-size: 10px;
+        margin-bottom: 20px;
     }
-  }
-  
-  /* Medium phones */
-  @media only screen and (min-width: 481px) and (max-width: 768px) {
-    body {
-      display: flex;
-      flex-direction: column;
+
+    #divContainer h2 {
+        /* color: blueviolet; */
+        font-size: 1.25em;
     }
-    h1 {
-        font-size: 25px;
+    ul button{
+        margin-right: 27px;
     }
-    .title{
-        font-size: 25px;
+}
+
+/* Small Phone Screen */
+@media only screen and (max-width: 576px) {
+    #generateButton {
+        font-size: 6px;
     }
-    #generateButton{
-        font-size: 10px;
+    .saveCharacterButton {
+        padding: 0x;
+        font-size: 24px;
     }
-  }
-  
-  /* Large phones */
-  @media only screen and (min-width: 769px) and (max-width: 992px) {
-    body {
-      display: flex;
-      flex-direction: column;
+    ul{
+        margin-right: 25px;
     }
-    h1 {
-        font-size: 25px;
-    }
-    .title{
-        font-size: 25px;
-    }
-    #generateButton{
-        font-size: 10px;
-    }
-  }
-  
-  /* Extra-large phones */
-  @media only screen and (min-width: 993px) and (max-width: 1200px) {
-    body {
-      display: flex;
-      flex-direction: column;
-    }
-    h1 {
-        font-size: 25px;
-    }
-    .title{
-        font-size: 25px;
-    }
-    #generateButton{
-        font-size: 10px;
-    }
-  }
-  
-  /* iPad portrait */
-  @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
-    body {
-      display: flex;
-      flex-direction: column;
-    }
-    h1 {
-        font-size: 25px;
-    }
-    .title{
-        font-size: 25px;
-    }
-    #generateButton{
-        font-size: 10px;
-    }
-  }
+    
+    
+}
