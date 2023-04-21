@@ -112,6 +112,7 @@ button {
 
     #generateButton {
         font-size: 10px;
+        margin-bottom: 20px;
     }
 
     #divContainer h2 {
