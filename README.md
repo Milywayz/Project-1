@@ -2,7 +2,7 @@
 
 ## Description
 
-This website was created to make a random generated Star Wars Character for people who enjoy adding lore into Star Wars. It creates a brand new character each time you click the generator button with different information about the character. Then there is also a save your character button to save any generated character information you want to keep safe to use for later.
+This website was created to make a random generated Star Wars Character for people who enjoy adding lore into Star Wars. It creates a brand new character each time you click the generator button with different information about the character. Then there is also a save your character button to save any generated character information you want to keep safe to use for later. made it better
 
 
 ## Installation
